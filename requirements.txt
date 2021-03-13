@@ -3,4 +3,3 @@ gunicorn
 django-heroku
 django-localflavor
 Pillow
-os
