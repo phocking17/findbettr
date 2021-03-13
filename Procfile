@@ -1,1 +1,1 @@
-web: gunicorn findbettr.wsgi
+web: gunicorn findbettr/findbettr.wsgi
