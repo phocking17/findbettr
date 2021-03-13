@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+
+body{
+	background-color:#fff;
+}
+
+h1, h2, h3, h4, h5, p, a{
+	color:#10457d;
+	font-family:"Noto Sans JP", Arial;
+}
+
+h1{
+	font-size: 100px;
+}
+
+.opener{
+	margin-top: 100px;
+	margin-right:10%;
+	margin-left:10%;
+	text-align:center;
+}
+
+.opener-buttons{
+	text-align: center;
+}
+
+.open-button{
+	background-color:#fdc924;
+	width:20%;
+	margin: 3% 35%;
+	border-radius:50px;
+	font-size: 30px;
+	padding:1% 5%;
+	font-weight: bold;
+}
+
+.open-button:hover{
+	background-color: #69c6e8;
+	transform: scale(1.1);
+}
+
+.opener-buttons > a{
+	text-decoration: none;
+}
+
+.quickfind{
+		background-color:#69c6e8!important;
+		color:#fff!important;
+}
+
+.block-item > h3, h4{
+			color:#fff!important;
+			text-align: center;
+			display:block;
+		}
+.block-item > h3{
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.block-item > h4{
+	font-size: 35px;
+	font-weight: semi-bold;
+}
+
+.categories-item{
+	background-color: #fff;
+	color:#69c6e8;
+	width:15%;
+	padding:.5% 4%;
+	border-radius:50px;
+	text-align: center;
+	display:inline-block;
+	margin:5px .5%;
+	min-width:100px;
+	font-size: 25px;
+}
+
+.categories-item > a{
+	text-decoration: none;
+	color:inherit;
+	text-align: center
+}
+
+.categories-item:hover{
+	box-shadow: 3px 3px 3px 3px #f2f2f2;
+	background-color: #69c6e8;
+	color:#fff;
+
+}
+
+.categories-list{
+	list-style-type:none;
+	padding-inline-start:0px;
+	width:60%;
+	margin: 10px 20%;
+	text-align:center;
+}

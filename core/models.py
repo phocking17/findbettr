@@ -14,6 +14,7 @@ def get_image_path(instance, filename):
 class Tag_Type(models.Model):
 	name=models.CharField(max_length=50)
 	question = models.CharField(max_length=500)
+	color=models.CharField(max_length=7)
 
 	def __str__(self):
 		s = self.name

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'core/main.css' %}">
+</head>
+<body class="results">
+
+{% for org in organizations %}
+<h1>{{ org.name }}</h1>
+{% endfor %}
+</body>
+</html>

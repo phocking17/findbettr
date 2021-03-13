@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
+<head>
+{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'core/main.css' %}">
+</head>
 <body>
 
-<h1>My First Heading</h1>
-<a href="aboutme"><p>My first paragraph.</p></a>
+<div class="opener">
+<h1>
+	<span style="color:#10457d">f</span><span style="font-size: 0px"> </span><span style="color:#7f3583">i</span><span style="color:#df1078">n</span><span style="color:#69c6e8">d</span><span style="color:#8bc73e">b</span><span style="color:#fdc924">e</span><span style="color:#37a649">t</span><span style="color:#862818">t</span><span style="color:#009ea1">r</span>
+</h1>
+</div>
+
+<div class="opener-buttons">
+	<a href="aboutme"><p class="open-button">Find Resources</p></a>
+	<a href="quickfind"><p class="open-button">QuickFind</p></a>
+	<a href="forpartners"><p>For Partners</p></a>
+</div>
 
 </body>
 </html>
