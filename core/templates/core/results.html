@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{% static 'core/main.css' %}">
 </head>
 <body class="results">
-
+<h4 style="color:#000!important">Resources related to '{% if seminame %}{{ seminame }} : {% endif %}{{ tag }}'</h4>
 {% for org in organizations %}
 <h1>{{ org.name }}</h1>
 {% endfor %}

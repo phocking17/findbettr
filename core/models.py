@@ -69,3 +69,10 @@ class Quote(models.Model):
 	def __str__(self):
 		s = self.author
 		return s
+
+
+
+class Response(models.Model):
+	tags_selected=models.ManyToManyField(Tag)
+	tags_completed=models.ManyToManyField(Tag_Type)
+	overall_tags_selected=models.ManyToManyField(Arching_Tag)

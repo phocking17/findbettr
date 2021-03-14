@@ -6,21 +6,26 @@
 <link rel="stylesheet" href="{% static 'core/main.css' %}">
 <style>
 	body{
-		background-color:{Tag_Type.color};
+		background-color:{{ color }};
+	}
+	.choice-item{
+		color: {{ color }};
 	}
 </style>
 </head>
-<body>
+<body class="aboutme">
 
 
-<div class="quote">
-	s
+<div id="quote">
+	<h1 class="quote">{{ quote }}</h1>
 </div>
 
-<div>
-	<h3 class="question-AB"></h3>
-	<ul>
-		<a><li></li></a>
+<div id="question">
+	<h3 class="question-AB">{{ question }}</h3>
+	<ul class="choice-list">
+		{% for choice in choices %}
+		<a href='{{ pkid }}/{{ metatag }}/{{ choice }}' class="choice-item"><li>{{ choice }}</li></a>
+		{% endfor %}
 	</ul>
 </div>
 
