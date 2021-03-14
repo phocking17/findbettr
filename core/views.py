@@ -61,12 +61,7 @@ def aboutme(request, instance=None):
 					'metatag' : tag
 					}
 				return HttpResponse(template.render(context, request))
-
-		else:
-			template=loader.get_template('core/results.html')
-			context={
-				}
-			return HttpResponse(template.render(context, request))
+		return redirect('../results/custom/'+str(r.id))
 
 
 
@@ -82,7 +77,7 @@ def quickfind(request):
 def results_general(request, arching_name):
 	template=loader.get_template('core/results.html')
 	context={
-		'organizations': Organization.objects.filter(overall_tags__name=arching_name),
+		'org_list': [[org] for org in Organization.objects.filter(overall_tags__name=arching_name)],
 		'tag':arching_name
 	}
 	return HttpResponse(template.render(context, request))
@@ -90,30 +85,66 @@ def results_general(request, arching_name):
 def results_tagspecific(request, tag_name,semi_name):
 	template=loader.get_template('core/results.html')
 	context={
-		'organizations': Organization.objects.filter(tags__name=tag_name),
+		'org_list': [[org] for org in Organization.objects.filter(tags__name=tag_name)],
 		'tag':tag_name,
 		'seminame':semi_name
 	}
 	return HttpResponse(template.render(context, request))
 
 
-def results(request):
+def results(request, instance):
 
+	r=Response.objects.get(pk=instance)
+	tags = r.tags_selected.all()
+	overall_tags = r.overall_tags_selected.all()
+	orgs = Organization.objects.all()
 
+	score_dict = {}
+	for org in list(orgs):
+		score = 0
+		division = 0
+		for tag in list(tags):
+			if tag in list(org.tags.all()):
+				score+=1
+				division+=1
+			else:
+				division+=1
+		for otag in list(overall_tags):
+			if otag in org.overall_tags:
+				score+=1
+				division+=1
+			else:
+				division+=1
+		fin_score = (score/division)*100
+		score_dict[org]=fin_score
+
+	sorted_keys = sorted(score_dict, key=score_dict.get)  # [1, 3, 2]
+
+	sorted_list=[]
+	for w in sorted_keys:
+		key = w
+		val = score_dict[w]
+		sorted_list.append([key, val])
+
+	sorted_list.reverse()
 
 
 	template=loader.get_template('core/results.html')
 	context={
-		'organizations':Organization.objects.filter(overall_tags=arching_name)
+		'customcheck':True,
+		'org_list':sorted_list,
 	}
 	return HttpResponse(template.render(context, request))
 
 def organization(request, org_name):
-	template=loader.get_template('core/index.html')
+	template=loader.get_template('core/organization.html')
 	org=Organization.objects.get(name=org_name)
-	context={'organization' : org}
+	context={
+		'organization' : org,
+		'overall_tags' : [tag.name for tag in org.overall_tags.all()]
+	}
 	return HttpResponse(template.render(context, request))
 
-def photo(request,photoname):
-	image_data = open("photos/None/"+photoname, "rb").read()
+def photo(request,photoname,orgid):
+	image_data = open("photos/"+ str(orgid) + "/"+photoname, "rb").read()
 	return HttpResponse(image_data, content_type="image/png")

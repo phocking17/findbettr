@@ -6,9 +6,68 @@
 <link rel="stylesheet" href="{% static 'core/main.css' %}">
 </head>
 <body class="results">
-<h4 style="color:#000!important">Resources related to '{% if seminame %}{{ seminame }} : {% endif %}{{ tag }}'</h4>
-{% for org in organizations %}
-<h1>{{ org.name }}</h1>
+
+	
+<div class="navbar">
+	<div class="logo">
+		<a href="../.." style="text-decoration: none"><p style="margin:0px"><span style="color:#10457d">f</span><span style="font-size: 0px"> </span><span style="color:#7f3583">i</span><span style="color:#df1078">n</span><span style="color:#69c6e8">d</span><span style="color:#8bc73e">b</span><span style="color:#fdc924">e</span><span style="color:#37a649">t</span><span style="color:#862818">t</span><span style="color:#009ea1">r</span></p></a>
+	</div>
+		<a href="../../aboutme" class="navtab" style="grid-column:3">Find Resources</a>
+		<a href="../../quickfind" class="navtab" style="grid-column:4">QuickFind</a>
+		<a href="../../forpartners" class="navtab" style="grid-column:5">Partners</a>
+</div>
+
+
+
+<div class = "wrapper">
+
+
+<div class="div-title">
+{% if tag %}
+<h4 class="result-title">Resources related to {% if seminame %}'{{ seminame }} : {% endif %} {% if tag %} '{{ tag }}' {% endif %}</h4>
+{% endif %}
+{% if customcheck %}
+<h4 class="result-title">Resources for You</h4>
+{% endif %}
+</div>
+
+
+{% for org in org_list %}
+
+<div class="org-box">
+	<div class="image-box">
+		<img class = "org-image" src="../../{{ org.0.org_image }}">
+	</div>
+	<div class="info-box">
+		<h5 class="org-title">{{ org.0.name }}</h5><br>
+		<h5 class="org-detail">{{ org.0.city }}, {{org.0.state}}</h5>
+	</div>
+
+	{% if org.1 %}
+	<div class="metric-holder">
+	<div class="full-metric">
+		<div class="partial-metric" style="width:{{ org.1 }}px">
+		</div>
+	</div>
+	<h5 class="org-detail">{{ org.1 }}% Match</h5>
+	</div>
+	{% endif %}
+
+	<a class="cta-button" href="../../organization/{{ org.0.name}}">
+		<h3 style="margin:5%">Learn More</h3>
+	</a>
+</div>
+
 {% endfor %}
+
+
+</div>
+
+
+
+
+
+
+
 </body>
 </html>

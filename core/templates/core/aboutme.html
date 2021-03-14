@@ -20,7 +20,7 @@
 	<h1 class="quote">{{ quote }}</h1>
 </div>
 
-<div id="question">
+<div class="question" id="question">
 	<h3 class="question-AB">{{ question }}</h3>
 	<ul class="choice-list">
 		{% for choice in choices %}
@@ -29,5 +29,36 @@
 	</ul>
 </div>
 
+
+
+
+
+<script>
+
+window.setTimeout(function(){qteopac()}, 5000);
+window.setTimeout(function(){qstopac()}, 5000);
+window.setTimeout(function(){hidequote()}, 5000);
+window.setTimeout(function(){showquestion()}, 6000);
+
+function hidequote() {
+  var x = document.getElementById("quote");
+    x.style.display = "none";
+}
+
+function showquestion() {
+  var x = document.getElementById("question");
+    x.style.display = "block";
+}
+
+function qteopac() {
+  var x = document.getElementById("quote");
+    x.style.opacity = "0%";
+}
+
+function qstopac() {
+  var x = document.getElementById("question");
+    x.style.opacity="100%";
+}
+</script>
 </body>
 </html>

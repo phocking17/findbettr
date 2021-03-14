@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/353be4f6f3.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'core/main.css' %}">
+</head>
+<body class="organization">
+
+
+
+
+<div class="navbar">
+	<div class="logo">
+		<a href="../.." style="text-decoration: none"><p style="margin:0px"><span style="color:#10457d">f</span><span style="font-size: 0px"> </span><span style="color:#7f3583">i</span><span style="color:#df1078">n</span><span style="color:#69c6e8">d</span><span style="color:#8bc73e">b</span><span style="color:#fdc924">e</span><span style="color:#37a649">t</span><span style="color:#862818">t</span><span style="color:#009ea1">r</span></p></a>
+	</div>
+		<a href="../../aboutme" class="navtab" style="grid-column:3">Find Resources</a>
+		<a href="../../quickfind" class="navtab" style="grid-column:4">QuickFind</a>
+		<a href="../../forpartners" class="navtab" style="grid-column:5">Partners</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="org-wrapper">
+	<div class = "org-header">
+		<div class="image-box-org">
+			<img src="../../{{ organization.org_image }}" class="org-image">
+		</div>
+		<div style="width: 50%">
+			<h1 class="org-title">{{ organization.name }}</h1>
+			<div class = "org-contact">
+				<h1 class="org-detail">{{ organization.street }},</h1>
+				<h1 class="org-detail">{{ organization.city }},</h1>
+				<h1 class="org-detail">{{ organization.state }}</h1>
+				<h1 class="org-detail">{{ organization.zipcode }}</h1>
+				<p class="break"></p>
+				<p>Website: <a href="{{ organization.website }}" target="_blank">{{ organization.website }}</a></p>
+				<p>Phone: <a href="tel:{{ organization.phone_number }}">{{ organization.phone_number }}</a></p>
+				<p>Email: <a href="mailto:{{ organization.email }}">{{ organization.email }}</a></p>
+				
+				<a href="{{ organization.website }}" target="_blank"><i class="fas fa-compass"></i></a>
+				<a href="tel:{{ organization.phone_number }}"><i class="fas fa-phone"></i></a>
+				<a href="mailto:{{ organization.email }}"><i class="fas fa-envelope"></i></a>
+			</div>
+		</div>
+	</div>
+	<div class = "org-body">
+		<p style="font-weight: bold; color:#fff">About {{ organization.name }}</p>
+		<p style="color:#fff">{{ organization.description }}</p>
+	</div>
+
+	<div class = "org-cperson">
+		<div class="image-box-person">
+			<img src="../../{{ organization.contact_image }}" class="org-image">
+		</div>
+		<div class="contact">
+
+			<p style="font-weight: bold; font-size: 35px">Primary Contact: {{ organization.contact_name }}</p>
+			<p class="org-detail">Phone: <a href="tel:{{ organization.contact_phone_number }}">  {{ organization.contact_phone_number }}</a></p>
+			<p class="break"></p>
+			<p class="org-detail">Email: <a href="mailto:{{ organization.contact_email }}">  {{ organization.contact_email }}</a></p>
+		</div>
+	</div>
+	<div class = "org-tags">
+		<h3>See Other Resources Related to:</h3>
+		{% for tag in overall_tags %}
+		<a href="../../results/{{ tag }}" class="org-button"><p style="color:#fff">{{ tag }}</p></a>
+		{% endfor %}
+	</div>
+</div>
+</body>
+</html>

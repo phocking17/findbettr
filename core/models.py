@@ -1,6 +1,5 @@
 from django.db import models
 from localflavor.us.us_states import STATE_CHOICES
-from localflavor.us.forms import USStateField
 import os
 
 
@@ -41,7 +40,7 @@ class Organization(models.Model):
 	name = models.CharField(max_length=200)
 	street = models.CharField(max_length=300)
 	city=models.CharField(max_length=100)
-	state=USStateField()
+	state= models.CharField(blank=True, max_length=2, choices=STATE_CHOICES)
 	zipcode = models.CharField(max_length=5)
 	description = models.CharField(max_length=1000)
 	tags=models.ManyToManyField(Tag)
@@ -52,6 +51,7 @@ class Organization(models.Model):
 	email = models.EmailField(max_length=254)
 	org_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 
+	contact_name = models.CharField(max_length=125)
 	contact_phone_number=models.CharField(max_length=12)
 	contact_email = models.EmailField(max_length=254)
 	contact_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
