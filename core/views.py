@@ -99,6 +99,8 @@ def results(request, instance):
 	overall_tags = r.overall_tags_selected.all()
 	orgs = Organization.objects.all()
 
+###################################################################
+### Matching Algorithm
 	score_dict = {}
 	for org in list(orgs):
 		score = 0
@@ -127,6 +129,9 @@ def results(request, instance):
 		sorted_list.append([key, val])
 
 	sorted_list.reverse()
+
+############################################################################
+
 
 
 	template=loader.get_template('core/results.html')
