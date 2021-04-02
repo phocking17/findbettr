@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
 import random
-
+from .forms import *
 from .models import Tag, Tag_Type, Arching_Tag, Organization, Response, Quote
 
 
@@ -153,3 +153,45 @@ def organization(request, org_name):
 def photo(request,photoname,orgid):
 	image_data = open("photos/"+ str(orgid) + "/"+photoname, "rb").read()
 	return HttpResponse(image_data, content_type="image/png")
+
+def add_organization(request):
+	template=loader.get_template('core/add.html')
+	new_form=OrganizationInformationForm()
+	context={
+		'form':new_form
+	}
+	return HttpResponse(template.render(context, request))
+
+def organization_completed(request):
+	template=loader.get_template('core/add.html')
+
+
+	
+	### Add Org
+	name = request.POST['name']
+	street = request.POST['street']
+	city=request.POST['city']
+	state= request.POST['state']
+	zipcode = request.POST['zipcode']
+	description = request.POST['description']
+	tags=request.POST['tags']
+	overall_tags = request.POST['overall_tags']
+
+	website=request.POST['website']
+	phone_number=request.POST['phone_number']
+	email = request.POST['email']
+	org_image = request.POST['org_image']
+
+	contact_name = request.POST['contact_name']
+	contact_phone_number=request.POST['contact_phone_number']
+	contact_email = request.POST['contact_email']
+	contact_image = request.POST['contact_image']
+
+	new_obj = Organization.objects.create(name=name, street=street, city=city, state=state, zipcode=zipcode, description=description, tags=tags, overall_tags=overall_tags, website=website, phone_number=phone_number, email=email, org_image=org_image, contact_name=contact_name, contact_email=contact_email, contact_image=contact_image)
+
+
+
+	context={
+		'org-url': ('/organization'+ name)
+	}
+	return HttpResponse(template.render(context, request))

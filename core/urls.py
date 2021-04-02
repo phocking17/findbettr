@@ -14,4 +14,7 @@ urlpatterns = [
     path("results/<str:arching_name>", views.results_general, name="results general"),
     path("results/custom/<int:instance>", views.results, name="results"),
     path("results/<str:semi_name>/<str:tag_name>", views.results_tagspecific, name="results tagspecific"),
+    path("add", views.add_organization, name="add"),
+    path("forpartners", views.add_organization, name="add"),
+    path("added", views.organization_completed, name="added")
 ]

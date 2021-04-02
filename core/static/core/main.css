@@ -6,7 +6,7 @@ body{
 	transition: all .5s ease;
 }
 
-h1, h2, h3, h4, h5, p, a{
+h1, h2, h3, h4, h5, p, a, label, input{
 	color:#10457d;
 	font-family:"Noto Sans JP", Arial;
 }
@@ -418,4 +418,39 @@ i:hover{
 	background-color: #69c6e8;
 	transform: scale(1.1);
 
+}
+
+
+form{
+	max-width: 500px;
+	margin:auto;
+}
+
+label, input{
+	display:block;
+	position:relative;
+	margin-top: 5px
+}
+
+input[type="text" i]{
+	width: 100%;
+	border-radius: 10px;
+	border-color: #10457d
+}
+input[type="checkbox" i]{
+	display:inline;
+	position:relative;
+	margin-top: 0px
+}
+
+
+#id_tags, #id_overall_tags{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#id_description{
+	height:200px;
+	overflow-wrap: break-word;
 }
